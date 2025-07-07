@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Problem 4: Count Multiples</title>
+  <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
+</head>
+<body>
+
+  <div class="container">
+    <h2>Problem 4: Count Multiples of 1 to 9</h2>
+
+    <label>Enter numbers (comma-separated):</label><br>
+    <input type="text" id="numberInput" placeholder="e.g. 1,2,8,9,12,46"><br><br>
+
+    <button onclick="handleCount()">Count</button>
+
+    <pre id="output"></pre>
+  </div>
+
+  <script>
+    function countMultiples(arr) {
+      const result = {};
+      for (let i = 1; i <= 9; i++) {
+        result[i] = arr.filter(num => num % i === 0).length;
+      }
+      return result;
+    }
+
+    function handleCount() {
+      const input = document.getElementById("numberInput").value;
+      const arr = input
+        .split(",")
+        .map(num => parseInt(num.trim()))
+        .filter(num => !isNaN(num));
+
+      const result = countMultiples(arr);
+
+      let output = "";
+      for (let key in result) {
+        output += key + ": " + result[key] + "\n";
+      }
+
+      document.getElementById("output").innerText = output;
+    }
+  </script>
+
+</body>
+</html>

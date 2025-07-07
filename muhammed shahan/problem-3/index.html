@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Problem-3: Conditional Odd Series</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h2>Generate Conditional Odd Number Series</h2>
+
+  <label>Enter a number (a): 
+    <input type="number" id="inputA" min="1">
+  </label>
+  <button onclick="handleGenerate()">Generate</button>
+
+  <h3 id="output">Output: </h3>
+
+  <script>
+    function conditionalOddSeries(a) {
+      let count = a % 2 === 0 ? a - 1 : a;
+      let result = [];
+      for (let i = 0; i < count; i++) {
+        result.push(1 + 2 * i);
+      }
+      return result;
+    }
+
+    function handleGenerate() {
+      const a = parseInt(document.getElementById("inputA").value);
+      const result = conditionalOddSeries(a);
+      document.getElementById("output").innerText = "Output: " + result.join(", ");
+    }
+  </script>
+
+</body>
+</html>
